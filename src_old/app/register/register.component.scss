@@ -1,0 +1,39 @@
+@import "../../scss/variables";
+
+.home-bg {
+  &.inputbox {
+    p {
+      font-family: $fontFamily-Libre;
+      font-size: 1.6em;
+    }
+    .noterg {
+      font-family: $fontFamily-Inter;
+      font-weight: 600;
+      color: #000;
+      text-align: center;
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+    }
+    form {
+      margin: 0 auto 30px;
+    }
+  }
+}
+
+.error{
+  color: red;
+}
+select{
+  &.form-control{
+    padding-left:53px!important; 
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    background-image: url(../../assets/images/chevron-down-sharp.svg);
+    background-size:12px 12px;
+    background-position: 97% 24px;
+    background-repeat: no-repeat;
+  }
+}

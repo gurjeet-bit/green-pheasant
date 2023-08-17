@@ -1,0 +1,151 @@
+<section
+  class="home-bg secpad inputbox"
+  style="background-image: url('assets/images/bg.jpg')">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">
+          Send me personally recommended poems by email
+        </h1>
+        <form [formGroup]="registerForm">
+         
+          <div class="chbox chbox1">
+            <div class="custom-control custom-radio mb-2">
+              <input
+                type="radio"
+                class="custom-control-input"
+                id="onceday"
+                name="urec_email_freq" value="0" formControlName="urec_email_freq"  [ngClass]="{ 'is-invalid': submitted && rForm.urec_email_freq.errors }"
+              />
+              
+              <label class="custom-control-label" for="onceday">Once a day</label>
+            </div>
+            <div class="custom-control custom-radio mb-2">
+              <input
+                type="radio"
+                class="custom-control-input"
+                id="onceweek"
+                name="urec_email_freq" value="1"  formControlName="urec_email_freq"  [ngClass]="{ 'is-invalid': submitted && rForm.urec_email_freq.errors }"
+              />
+
+              <label class="custom-control-label" for="onceweek"
+                >Once a week</label>
+            </div>
+            <div class="custom-control custom-radio mb-2">
+              <input
+                type="radio"
+                class="custom-control-input"
+                id="oncemonth"
+                name="urec_email_freq" value="2" formControlName="urec_email_freq"  [ngClass]="{ 'is-invalid': submitted && rForm.urec_email_freq.errors }"
+              />
+              <label class="custom-control-label" for="oncemonth"
+                >Once a month</label>
+            </div>
+            <div *ngIf="submitted && rForm.urec_email_freq.errors && rForm.urec_email_freq.invalid" class="invalid-feedback">
+              <div *ngIf="rForm.urec_email_freq.errors.required">Please select how many times you want the poem on your email adddress</div>
+            </div>
+          </div>
+          <input type="hidden" name="sendPoemVia" value="via_email" >
+          <input type="hidden" name="user_id" value="{{user_id}}">
+
+          <div class="chbox chbox1">
+            <div class="custom-control custom-radio mb-2">
+              <input
+                class="custom-control-input"
+                type="radio"
+                name="recommend_poem_email"
+                id="1"
+                formControlName="recommend_poem_email" (click)="checkEmailAddressRegistered($event)"  [ngClass]="{ 'is-invalid': submitted && rForm.recommend_poem_email.errors }"
+                [value]="0"
+              />
+              <label class="custom-control-label" for="1"
+                >Use the email address that I registered with</label>
+            </div>
+
+            <div class="custom-control custom-radio mb-2">
+              <input
+                class="custom-control-input"
+                type="radio"
+                name="recommend_poem_email"
+                id="2"
+                formControlName="recommend_poem_email" (click)="checkEmailAddressRegistered($event)" [ngClass]="{ 'is-invalid': submitted && rForm.recommend_poem_email.errors }"
+                [value]="1"
+              />
+
+              <label class="custom-control-label" for="2">Use a different email address
+              </label>
+            </div>
+          </div>
+
+          <div class="showDiv" *ngIf="registerForm.value.recommend_poem_email != 1">
+            <a (click)="openModal(template1)"
+              class="btn btn-info justify-content-center brnone custombtn mt-4 custombtn1">
+              Submit
+            </a>
+          </div>
+
+          <div class="showDiv" *ngIf="registerForm.value.recommend_poem_email == 1">
+            <div class="form-group">
+              <img src="assets/images/email.svg" alt="" />
+              <input type="text" class="form-control" formControlName="other_email"  [ngClass]="{ 'is-invalid': submitted && rForm.other_email.errors }" placeholder="Email" />
+
+              <span error *ngIf="isControlHasError('other_email','required')"><strong>Please enter an email</strong></span>
+                 <!-- <div *ngIf="rForm.other_email.errors.other_email"><strong>Email must be a valid email address</strong></div> -->
+            
+            </div>
+
+            <a (click)="openModal(template)"
+              class="btn btn-info justify-content-center brnone custombtn mt-4 custombtn1">
+              Submit
+            </a>
+          </div>
+          <!-- <div class="justify-content-center d-flex mt-4">
+            <a routerLink="/register"
+              class="btn clicktext btn-info justify-content-center brnone custombtn custombtn1">
+              Not registered? Click here
+            </a>
+          </div> -->
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  <div class="mt-auto">
+    <app-footer></app-footer>
+  </div>
+</section>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+<ng-template #template>
+  <div class="modal-body">
+    <img src="assets/images/modalimg.png" class="img-fluid" alt="" />
+
+    <p>
+      We will send you the poems as you requested, we hope you enjoy them.
+      <!-- {{message32}} -->
+    </p>
+    <a
+      routerLink="/sendmepoemthat"
+      (click)="modalRef?.hide()"
+      class="btn btn-info justify-content-center brnone custombtn mt-4 custombtn1">
+      OK
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #template1>
+  <div class="modal-body">
+    <img src="assets/images/modalimg.png" class="img-fluid" alt="" />
+    <!-- <p>We sent the first poem to your email.</p> -->
+    <p>
+      We will send you the poems as you requested, we hope you enjoy them.
+      <!-- {{message32}} -->
+    </p> 
+    <a
+      (click)="modalRef?.hide()"
+      class="btn btn-info justify-content-center brnone custombtn mt-4 custombtn1">
+      OK
+    </a>
+  </div>
+</ng-template>

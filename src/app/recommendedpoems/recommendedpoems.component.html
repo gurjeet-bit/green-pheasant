@@ -1,0 +1,32 @@
+<section
+  class="home-bg secpad inputbox"
+  style="background-image: url('assets/images/bg.jpg')"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center pagemaintitle">Send me personally recommended poems</h1>
+        <div class="formbox">
+          <a (click)="onemailclick()" class="btn mb-3" [ngClass]= "responseData?.recommend_poem == 0 ? 'anthrclss' : ''">
+            <img src="assets/images/email.svg" class="phone" alt="" />
+            By email
+          </a>
+          <a (click)="onphoneclick()" class="btn mb-3" [ngClass]= "responseData?.recommend_poem == 1 ? 'anthrclss' : ''">
+            <img src="assets/images/phone.svg" class="phone" alt="" />
+            On mobile phone
+          </a>
+          <!-- (click)="openModal(template)" -->
+          <a
+            (click)="onbothclick()"
+            class="btn" [ngClass]= "responseData?.recommend_poem == 2 ? 'anthrclss' : ''">
+            <img src="assets/images/emailphone.svg" class="phone" alt="" />
+            Both email and mobile phone
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-auto">
+    <app-footer></app-footer>
+  </div>
+</section>

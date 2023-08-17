@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Green Pheasants</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+   <!-- <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+  <link rel="manifest" href="/src/manifest.json"> -->
+  <script src="https://js.stripe.com/v3/"></script>
+  
+<!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "11b22bad-ff6f-4a67-8e28-b7bb17d646bf",
+    });
+  });
+</script> -->
+      
+      
+</head>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      // navigator.serviceWorker.register("/flutter_service_worker.js");
+      navigator.serviceWorker.register("/firebase-messaging-sw.js");
+    });
+  }
+  </script>
+  
+<!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script> -->
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk_zrE74VOviFJ-kx_tSwbRmrZH-JxAJI" async></script> -->
+<body>
+  <app-root></app-root>
+  
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
+</html>

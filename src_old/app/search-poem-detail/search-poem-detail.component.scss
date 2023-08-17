@@ -1,0 +1,176 @@
+@import "../../scss/variables";
+
+.container {
+    margin-top: auto;
+}
+
+.poembox {
+   h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+    font-family: $fontFamily-Electra;
+  }
+  h3 {
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-family: $fontFamily-Founders;
+    span {
+      color: #494949;
+    }
+  }
+  p {
+    width: 100%;
+    max-width: 395px;
+    font-size: 1.1875rem;
+    font-family: $fontFamily-Electra1;
+    color: #000;
+  }
+
+    h4 {
+        font-weight: 700;
+        font-family: $fontFamily-Libre;
+        font-size: 25px;
+        color: #000000;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+        font-size: 20px;
+        display: block;
+        transition: all ease 0.3s;
+        word-break: break-word;
+        &.underlinea {
+            text-decoration: underline;
+        }
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .recbox {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2.71292px solid rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        padding: 20px;
+        margin-top: 12px;
+        width: 100%;
+
+        .pos {
+            position: relative;
+
+            .fontabs {
+                position: absolute;
+                right: 15px;
+                top: 14px;
+                color: #fff;
+            }
+
+            .custombtn {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    }
+    .poem-rightside {
+        a.recbtn {
+            font-size: 20px;
+        }
+    }
+}
+
+.poem-rightside {
+    .recbtn {
+        padding: 10px !important;
+    }
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: "";
+    font-size: 17px;
+}
+
+.topbor {
+    display: none;
+}
+
+.recommend_poem_btn img {
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;   
+}
+
+@media (max-width: 991px) {
+    .poembox {
+        h1 {
+            font-size: 30px;
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 40px;
+            font-weight: 500;
+        }
+
+        h4 {
+            font-size: 24px;
+        }
+
+        a {
+            font-size: 20px;
+        }
+
+        .recbtn {
+            padding: 8px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .mtmob {
+        margin-top: 25px;
+    }
+
+    .topbor {
+        display: block;
+        border-top: 1px solid #ccc;
+        margin-top: 20px;
+    }
+
+    .poembox {
+        h1 {
+            font-size: 25px;
+        }
+
+        h3 {
+            font-size: 15px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 35px;
+            font-weight: 500;
+        }
+
+        h4 {
+            font-size: 18px;
+        }
+
+        a {
+            font-size: 14px;
+        }
+
+        .recbtn {
+            padding: 6px;
+        }
+    }
+}

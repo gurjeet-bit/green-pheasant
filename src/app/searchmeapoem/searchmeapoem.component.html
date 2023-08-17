@@ -1,0 +1,88 @@
+<section class="home-bg secpad inputbox" style="background-image: url('assets/images/bg.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center  pagemaintitle">Search for a poem</h1>
+      </div>
+    </div>
+
+    <div class="row mb-lg-4 md-md-4 mb-4 justify-content-center">
+      <div class="col-md-7 inputbox">
+        <div class="inform">
+          <div class="form-group mb-0">
+            <img src="assets/images/search.svg" alt="" />
+            <input type="text" class="form-control" [(ngModel)]="searchedValue" (ngModelChange)="searchPoem($event)"
+              placeholder="Title, poet or text from the poem" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center" *ngIf="poemList.length==0">
+      <h5>No record found</h5>
+    </div>
+
+    <div class="row hidecollection" (click)="clickedOut($event)" *ngIf="isLoaded === true && poemList.length != 0">
+      <div class="col-md-7 col-xl-8 col-lg-8">
+        <div class="row">
+
+          <div class="col-sm-12 col-12 col-md-12 col-xl-6 col-lg-6 posrel"
+            *ngFor="let item of poemList; let i = index;">
+            <a class="cardbox" routerLink="/poem/{{item?.itemid}}">
+              <div class="cardbox__left" *ngIf="user_id!=0" routerLink="/poem/{{item?.itemid}}">
+                <h2 routerLink="/poem/{{item?.itemid}}">{{item?.title}}</h2>
+                <h3 routerLink="/poem/{{item?.itemid}}">by {{item?.cretor_name}}</h3>
+              </div>
+
+              <div class="cardbox__left" *ngIf="user_id==0" routerLink="/search-poem-detail/{{item?.itemid}}">
+                <h2 routerLink="/search-poem-detail/{{item?.itemid}}">{{item?.title}}</h2>
+                <h3 routerLink="/search-poem-detail/{{item?.itemid}}">by {{item?.cretor_name}}</h3>
+              </div>
+
+              <div class="cardbox__right" *ngIf="user_id!=0">
+                <p *ngIf="getInnerText(whatsNew)?.length > 50">
+                  {{(getInnerText(whatsNew) | slice:0:50)}}<span>...</span>
+                </p>
+
+                <p *ngIf="getInnerText(whatsNew)?.length < 50">
+                  {{(getInnerText(whatsNew))}}
+                </p>
+                <p routerLink="/poem/{{item?.itemid}}" hidden [innerHTML]="item?.description" #whatsNew></p>
+              </div>
+
+              <div class="cardbox__right" *ngIf="user_id==0">
+                <!-- <p> {{ getInnerText(whatsNew)?.length > 50 ? (getInnerText(whatsNew) | slice:0:50) +'...' : getInnerText(whatsNew) }}</p> -->
+                <p *ngIf="getInnerText(whatsNew)?.length > 50">
+                  {{(getInnerText(whatsNew) | slice:0:50)}}<span>...</span>
+                </p>
+
+                <p *ngIf="getInnerText(whatsNew)?.length < 50">
+                  {{(getInnerText(whatsNew))}}
+                </p>
+                <p routerLink="/search-poem-detail/{{item?.itemid}}" hidden [innerHTML]="item?.description" #whatsNew>
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngIf="next" class="justify-content-center align-items-center d-flex mt-0 mb-5 brmb loadMoreButton">
+              <a (click)="loadMore()"
+                class="btn btn-info justify-content-center w-50new brnone custombtn mt-4 custombtn1">
+                Load more
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mt-auto">
+    <app-footer></app-footer>
+  </div>
+</section>

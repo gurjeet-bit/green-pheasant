@@ -1,0 +1,148 @@
+@import "../../scss/variables";
+
+header {
+  position: absolute;
+  width: 100%;
+  &.sticky-top {
+    background-color: #deecf7;
+    position: fixed !important;
+    top: 0;
+    z-index: 99999;
+    left: 0;
+    .brbtm {
+      border: none;
+    }
+  }
+  .homea {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2.71292px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    font-size: 1em;
+    height: 51px;
+    width: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    transition: all ease 0.3s;
+    img {
+      width: 35px;
+      height: 29px;
+    }
+    &:hover {
+      border-color: #000;
+    }
+  }
+  .menu {
+    width: 44px;
+    height: 30px;
+    object-fit: contain;
+    cursor: pointer;
+    @media (max-width: 767px) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .brbtm {
+    padding: 12px 0;
+    border-bottom: 2px solid #000000;
+    position: relative;
+    z-index: 2;
+  }
+  .heaederbtnDesktop {
+    display: none;
+    @media (max-width: 767px) {
+      display: block;
+    }
+  }
+  .heaederbtn {
+    a {
+      img {
+        display: none;
+        @media (max-width: 767px) {
+          display: block;
+          width: 19px;
+          height: 19px;
+        }
+      }
+      span {
+        @media (max-width: 767px) {
+          display: none;
+        }
+      }
+      @media (max-width: 767px) {
+        &.custombtn {
+          width: 50px;
+        }
+      }
+    }
+  }
+  .btn-group {
+    display: block;
+    .dropdown-toggle {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2.71292px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50px;
+      font-size: 1em;
+      height: 51px;
+      width: 51px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      transition: all ease 0.3s;
+      margin-left: 10px;
+      &:hover {
+        border-color: #000;
+      }
+      img {
+        width: 30px;
+      }
+      &::after {
+        display: none;
+      }
+    }
+    .dropdown-menu {
+      padding: 0;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2.71292px solid rgba(255, 255, 255, 0.5);
+      li {
+        border-bottom: 1px solid #dbdbdb;
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+      .dropdown-item {
+        padding: 12px 30px 12px 15px;
+        font-weight: 500;
+        .signimg {
+          width: 18px;
+          object-fit: contain;
+          margin-right: 9px;
+        }
+        .createimg {
+          width: 22px;
+          object-fit: contain;
+          margin-right: 5px;
+        }
+        &:focus,
+        &:active {
+          background-color: transparent !important;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+.hidem {
+  display: none;
+}
+@media (max-width: 767px) {
+  .showp {
+    display: none;
+  }
+  .hidem {
+    display: block;
+  }
+}

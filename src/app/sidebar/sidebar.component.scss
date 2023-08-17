@@ -1,0 +1,85 @@
+@import "../../scss/variables";
+.sidepanel {
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  height: 100%;
+  top: 0;
+  left: -50px;
+  background-color: rgba(0, 0, 0, 0.4);
+  .sidepanelbox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+    max-width: 380px;
+    background: linear-gradient(195.49deg, #c4c4c4 21.7%, #57a0d3 79.14%);
+    mix-blend-mode: normal;
+    .sideoverflow {
+      padding: 0 15px;
+      overflow-x: hidden;
+    }
+    .linkside {
+      padding: 27px 10px;
+      list-style: none;
+      li {
+        a {
+          font-family: $fontFamily-Libre;
+          padding: 0;
+          text-decoration: none;
+          font-size: 16px;
+          padding-bottom: 6px;
+          color: #000;
+          display: inline-block;
+          transition: 0.3s;
+          margin-bottom: 18px;
+          border-bottom: 1px solid transparent;
+          &.active {
+            border-bottom: 1px solid #000;
+          }
+          &:hover {
+            color: #fff;
+            border-bottom: 1px solid #fff;
+          }
+        }
+      }
+    }
+
+    .panelogo {
+      border-bottom: 2px solid #000;
+      img {
+        width: 118px;
+        height: 75px;
+        object-fit: contain;
+      }
+    }
+
+    p {
+      margin: 30px auto 15px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 17px;
+      right: -20px;
+      z-index: 2;
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .sidepanel {
+    .sidepanelbox {
+      max-width: 280px;
+    }
+  }
+}

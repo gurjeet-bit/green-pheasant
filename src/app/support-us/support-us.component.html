@@ -1,0 +1,168 @@
+<section
+  class="home-bg secpad inputbox"
+  style="background-image: url('assets/images/supportus.png')">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h1 class="show-mobileLg">
+          Help us present poetry to people, with no ads
+        </h1>
+
+        <div class="supportbox">
+          <img src="assets/images/bird.png" class="img-fluid" alt="" />
+        </div>
+        <div class="supportbox">
+          <p>
+            Your contribution would help us to cover our costs, and it would
+            also make us feel appreciated. We would be really grateful if you
+            choose to donate.
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-md-8">
+        <form class="" [formGroup]="supportUsForm"  >
+          <div class="support_heading">
+            <h2 class="mb-4 show-mobileLg">Support Us</h2>
+            <h1 class="show-desktopLg">
+              Help us present poetry to people, with no ads
+            </h1>
+
+            <select #mySelect formControlName="currency" aria-placeholder="Select Currency" class="form-control"
+                (change)="changeCurrency($event.target)">
+              <option  *ngFor="let item of currencies" value="{{item?.name}}" selected>
+                {{item?.name}} {{item?.symbol}} </option>
+            </select>
+
+          </div>
+          
+          <h2 class="mb-4 show-desktopLg mt-3">Support Us</h2>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+            type="radio"
+            class="custom-control-input"
+            id="customRadio"
+            formControlName="payment_type"
+            value="one_time"
+          />
+          <label class="custom-control-label" for="customRadio">One Time</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input
+            type="radio" 
+            class="custom-control-input"
+            checked
+            id="customRadio2"
+            formControlName="payment_type"
+            value="monthly"
+          />
+          <label class="custom-control-label" for="customRadio2">Monthly</label>
+          </div>
+
+          <div class="row mt-4">
+            
+            <div class="col-md-4 col-xl-4 col-lg-4 col-6 ">
+              <button class="recbtn mb-3" [ngClass]="{
+                'activeClass': 5==price
+                }" (click)="amount(5)" >{{selected_currency_symbol}} 5 </button>
+            </div>
+
+            <div class="col-md-4 col-xl-4 col-lg-4 col-6">
+              <button class="recbtn mb-3" [ngClass]="{
+                'activeClass': 10==price
+                }" (click)="amount10(10)">{{selected_currency_symbol}} 10</button>
+            </div>
+            
+            <div class="col-md-4 col-xl-4 col-lg-4 col-6">
+              <button class="recbtn mb-3" [ngClass]="{
+                'activeClass': 20==price
+                }"  (click)="amount20(20)">{{selected_currency_symbol}} 20</button>
+            </div>
+
+            <!-- <div class="col-md-4 col-xl-4 col-lg-4 col-6 show-mobileLg">
+              <button class="recbtn mb-3" (click)="amount40(40)">{{selected_currency_symbol}} 401111</button>
+            </div> -->
+          </div>
+         
+          <div class="row mb-4 mt-2">
+            <div class="col-md-4 col-xl-4 col-lg-4 col-6 show-desktopLg">
+              <button class="recbtn mb-3" [ngClass]="{
+                'activeClass': 40==price
+                }" (click)="amount40(40)">{{selected_currency_symbol}} 40</button>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="other_amount" (click)="otherInputFunc()" [ngClass]="{ 'is-invalid': submitted && form.other_amount.errors }"
+                  placeholder="{{selected_currency_symbol}} Other amount"
+                  min="1000"
+                />
+                <div error *ngIf="isControlHasError('other_amount','required')" class="error"><p><strong>Please enter amount</strong></p></div>
+                <!-- <div *ngIf="submitted && form.other_amount.errors && form.other_amount.invalid" class="invalid-feedback">
+                  <div *ngIf="form.other_amount.errors.required">Other amount is required</div>
+                </div> -->
+              </div>
+              <!-- <p class="pl-4 mt-0">Minimum amount is $2</p> -->
+            </div>
+          </div>
+
+          <h2 class="chooseheading mb-3">
+            Choose Payment
+            <img src="assets/images/secure.png" alt="" />
+          </h2>
+
+         <!--  <div class="row paybtn">
+           
+            <div class="col-md-6">
+              <button  class="paypal btn btn-success" type="submit" (click)="submitForm()" >
+                  <img src="assets/images/logo-paypal.svg" width="20" alt="" />
+                  Pay
+              </button>
+
+            </div>
+
+          </div> -->
+          <br>
+
+          <!-- <div *ngIf="showPaypalCondtion==true "> -->
+          <div>
+              <!-- <div #paypal></div> -->
+            <div class="container">
+              <div class="paymentwrapper">
+               
+                <ngx-paypal *ngIf="showPaypalbtn == true" [config]="payPalConfig" debug=true></ngx-paypal>
+<!--                 <ngx-paypal #payPalElem2 *ngIf="currency == 'EUR'" [config]="payPalConfig" debug=true></ngx-paypal>
+                <ngx-paypal *ngIf="currency == 'GBP'" [config]="payPalConfig" debug=true></ngx-paypal>
+                <ngx-paypal *ngIf="currency == 'CAD'" [config]="payPalConfig" debug=true></ngx-paypal>
+                <ngx-paypal *ngIf="currency == 'AUD'" [config]="payPalConfig" debug=true></ngx-paypal> -->
+                
+                <ngx-paypal *ngIf="showPaypalbtn == true" #basic [config]="configs['basic']" [registerScript]="false"></ngx-paypal>
+                <ngx-paypal *ngIf="showPaypalbtnmonthly == true" #basic [config]="configs['Basic Plan']" 
+            [registerScript]="false" ></ngx-paypal>
+
+                <ngx-paypal *ngIf="showPaypalbtn == true" #advanced [config]="configs['advanced']" [registerScript]="false"></ngx-paypal>
+               <button *ngIf="showPaypalbtn == false && showPaypalbtnmonthly == false" (click)="usepaypal()" class="btn btn-danger btn-block credclss">Use Paypal</button>
+                <button (click)="makePayment()" class="btn btn-danger btn-block credclss">Credit Card</button>
+              </div>
+            </div>
+
+          </div>
+
+          <p class="pt-5 btext">
+            Green Pheasants is committed to your privacy; please read our
+            <a routerLink="/privacy-policy">privacy policy</a> here. Your payment
+            details will be processed by Braintree, a PayPal company (for
+            credit/debit cards) or PayPal, and a record of your donation will be
+            stored by Green Pheasants.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-auto">
+    <app-footer></app-footer>
+  </div>
+</section>

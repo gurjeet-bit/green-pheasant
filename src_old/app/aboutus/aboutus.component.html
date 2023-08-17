@@ -1,0 +1,36 @@
+<section
+  class="home-bg secpad inputbox"
+  style="background-image: url('assets/images/bg2.png')">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center pagemaintitle">About Us</h1>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="userinfo">
+             <!--  <img 
+                src="{{imageBaseUrl+'/aboutUsImage/'+this?.responseData?.initiator_image }}"
+               class="img-fluid" alt="" /> -->
+              <h1>{{responseData?.initiator_name}}</h1>
+              <p>Initiator</p>
+            </div>
+           <p innerHtml="{{this?.responseData?.story_by_initiator}}"></p>
+          </div>
+          <div class="col-md-6">
+            <div class="userinfo">
+              <!-- <img src="{{imageBaseUrl+'/aboutUsImage/'+this.responseData?.developer_image }}" class="img-fluid" alt="" /> -->
+                <h1>{{responseData?.developer_name}}</h1>
+              <p>Full Stack Developer</p>
+            </div>
+            <p innerHtml="{{this?.responseData?.story_by_developer}}"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-auto">
+    <app-footer></app-footer>
+  </div>
+</section>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

@@ -1,0 +1,70 @@
+@import "../../scss/variables";
+
+.home-bg {
+  &.inputbox {
+    p {
+      font-family: $fontFamily-Libre;
+      font-size: 18px;
+      margin: 10px auto;
+    }
+    form {
+      margin: 0 auto 35px;
+      .form-group {
+        label {
+          padding-left: 15px;
+          font-weight: 700;
+          margin-bottom: 4px;
+          font-size: 16px;
+        }
+        .form-control {
+          padding-left: 58px;
+          &::placeholder {
+            color: #000;
+          }
+        }
+      }
+    }
+
+    hr {
+      margin-bottom: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.4);
+      width: 100%;
+      max-width: 457px;
+    }
+    .custom-control-label {
+      font-weight: 600;
+    }
+
+    .noterg {
+      font-family: $fontFamily-Inter;
+      font-weight: 600;
+      color: #000;
+      text-align: center;
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .mtdel {
+    margin-top: 85px;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-bg {
+    &.inputbox {
+      p {
+        &.w-50 {
+          width: 100% !important;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.errorValidation{
+  color: #dc3545;
+}

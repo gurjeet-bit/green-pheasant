@@ -1,0 +1,146 @@
+<div class="sidepanel" [@widthGrow]="state" (click)="changeState1()">
+  <div class="sidepanelbox">
+    <a href="javascript:void(0)" class="closebtn">
+      <img src="assets/images/sidebararrow.svg" alt="" />
+    </a>
+    <ng-scrollbar #scrollable [disabled]="disabled">
+      <div class="sideoverflow">
+        <div class="panelogo">
+          <img src="assets/images/logo.png" alt="" />
+        </div>
+
+        <ul class="linkside">
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink='/home'  
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive="active"
+              >Home</a>
+          </li>
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink="/mycollection"
+              routerLinkActive="active"
+              >My Collection</a
+            >
+          </li>
+          <li>
+            <!-- routerLink="/recommendedpoems" -->
+            <a
+              (click)="onsendmeclick(template)"
+              routerLinkActive="active"
+              >Send me Poems</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink="/searchmeapoem"
+              routerLinkActive="active"
+              >Search for a Poem</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink="/uploadanoldpoem"
+              routerLinkActive="active"
+              >Upload an Old Poem</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink="/about"
+              routerLinkActive="active"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink="/faqs"
+              routerLinkActive="active"
+              >FAQ</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink="/support-us"
+              routerLinkActive="active"
+              >Support Us</a>
+          </li>
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink="/myprofile"
+              routerLinkActive="active">
+              My Profile
+            </a>
+          </li>
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink="/contactus"
+              routerLinkActive="active"
+              >Contact Us</a>
+          </li>
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink="/privacy-policy"
+              routerLinkActive="active"
+              >Privacy Policy</a>
+          </li>
+          <li>
+            <a
+              (click)="toggleMenu()"
+              routerLink="/termsconditions"
+              routerLinkActive="active"
+              >Terms and Conditions</a
+            >
+          </li>
+          <li>
+          
+             <a
+
+              (click)="toggleMenu()"
+              routerLink="/app-download"
+              routerLinkActive="active"
+             
+              >Download our app</a
+            > 
+          </li>
+
+        </ul>
+        
+       
+
+        <div *ngIf="user_id!='' && user_id!=undefined" class="d-flex justify-content-center mt-auto" >
+          <a
+            (click)="logout()"
+            class="btn btn-info justify-content-center custombtn">
+            Logout
+          </a>
+        </div>
+
+        <p>All Copyrights Reserved © 2023</p>
+      </div>
+    </ng-scrollbar>
+  </div>
+</div>
+<ng-template #template>
+  <div class="modal-body">
+    <img src="assets/images/modalimg.png" class="img-fluid" alt="" />
+    <h2>We are already sending you personally recommended poems, would you like to make any changes?</h2>
+    <button (click)="onredrctpoem()" class="btn btn-info justify-content-center brnone custombtn mt-4 custombtn1">
+      Yes
+    </button>
+    <button (click)="modalRef?.hide()" class="btn btn-info justify-content-center brnone custombtn mt-4 custombtn1">
+      No
+    </button>
+  </div>
+</ng-template>

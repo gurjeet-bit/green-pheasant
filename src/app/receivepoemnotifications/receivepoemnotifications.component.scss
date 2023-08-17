@@ -1,0 +1,115 @@
+@import "../../scss/variables";
+
+.home-bg {
+  &.inputbox {
+    p {
+      font-family: $fontFamily-Libre;
+      font-size: 18px;
+      margin: 10px auto;
+    }
+    .chbox {
+      display: flex;
+      justify-content: space-evenly;
+      margin: 40px auto 25px;
+      font-size: 20px;
+      .custom-control-label {
+        &::before {
+          top: 7px;
+        }
+        &::after {
+          top: 7px;
+        }
+      }
+        &.chbox1 {
+        margin: 20px auto 25px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+       // align-items: center;
+      }
+    }
+    form {
+      margin: 0 auto 55px;
+      .form-group {
+        label {
+          padding-left: 15px;
+          font-weight: 700;
+          margin-bottom: 4px;
+          font-size: 16px;
+        }
+        .form-control {
+          padding-left: 58px;
+        }
+      }
+    }
+
+    .clickText {
+      text-decoration: none;
+      color: #000;
+      margin-left: 5px;
+    }
+    .custom-control-label {
+      font-weight: 600;
+    }
+
+    .noterg {
+      font-family: $fontFamily-Inter;
+      font-weight: 600;
+      color: #000;
+      text-align: center;
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.mbshow {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .home-bg {
+    h1 {
+      font-size: 17px;
+      &.titremove br {
+        display: none;
+      }
+    }
+    .mbshow {
+      display: block !important;
+    }
+    .deshow {
+      display: none !important;
+    }
+    &.inputbox {
+      .custom-control-label {
+        font-size: 15px;
+      }
+      .chbox {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 45px auto 10px;
+        .custom-control {
+          width: 50%;
+          &.mb-2 {
+            margin-bottom: 18px !important;
+          }
+          .custom-control-label {
+            &::before {
+              top: 2px;
+            }
+            &::after {
+              top: 2px;
+            }
+          }
+        }
+      }
+      .noterg {
+        font-size: 18px;
+      }
+    }
+  }
+}

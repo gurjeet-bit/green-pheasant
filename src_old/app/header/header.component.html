@@ -1,0 +1,99 @@
+<header id="wrapper" class="navbarnew" (scroll)="onWindowScroll()">
+  <div class="container container-header">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center brbtm">
+          <img
+            src="assets/images/menu-icon.svg"
+            class="menu menu-toggle"
+            alt="Logo"
+            (click)="changeState()"
+          />
+          <div class="d-flex align-items-center">
+            <div class="btn-group" dropdown *ngIf="this.user_id==''">
+              <button
+                dropdownToggle
+                type="button"
+                triggers="hover"
+                class="dropdown-toggle"
+                aria-controls="dropdown-basic"
+              >
+                <img src="assets/images/user.svg" alt="" />
+              </button>
+              <ul
+                id="dropdown-basic"
+                *dropdownMenu
+                class="dropdown-menu dropdown-menu-right"
+                role="menu"
+                aria-labelledby="button-basic">
+                
+                <li role="menuitem">
+                  <a class="dropdown-item" routerLink="/login">
+                    <img src="assets/images/user.svg" class="signimg" alt="" />
+                    Sign in
+                  </a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" routerLink="/register">
+                    <img
+                      src="assets/images/user-plus.svg"
+                      class="createimg"
+                      alt=""
+                    />
+                    Create account
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- user-id=> {{this.user_id}} -->
+          
+            <div class="btn-group" dropdown *ngIf="this.user_id!=''">
+              <button dropdownToggle type="button" triggers="hover" class="dropdown-toggle" aria-controls="dropdown-basic">
+                <img src="assets/images/user.svg" alt="" />
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu"
+                aria-labelledby="button-basic">
+
+               <!--  <li role="menuitem">
+                  <a class="dropdown-item" (click)="addToHomeScreen()">
+                    <img src="assets/images/user.svg" class="signimg" alt="" />Install App </a>
+                </li> -->
+                <li role="menuitem">
+                  <a class="dropdown-item" routerLink="/myprofile">
+                    <img src="assets/images/user.svg" class="signimg" alt="" />{{user_name}} </a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" (click)="logout()">
+                    <img src="assets/images/logout.svg" class="signimg" alt="" />Logout</a>
+                </li>
+              </ul>
+            </div>
+
+            <a routerLink="/home" class="homea ml-2">
+              <img src="assets/images/home.svg" alt="" />
+            </a>
+            <!-- <div class="heaederbtnDesktop">
+              <div class="d-flex heaederbtn">
+                <a routerLink="/register" class="btn btn-info custombtn mr-3">
+                  <img src="assets/images/user-plus.svg" alt="" />
+                </a>
+                <span class="hidem">
+                  <a routerLink="/home" class="btn btn-info custombtn">
+                    <img src="assets/images/logout.svg" alt="" />
+                  </a>
+                </span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-sidebar [state]="state" (changeStatus)="getStatus($event)"></app-sidebar>
+</header>
+   <a *ngIf="showicnArrow == true" (click)="addToHomeScreen()" class="homea ml-2 downloadicn">
+              <img src="assets/images/install.svg" alt="" />
+            </a>
+
+<router-outlet></router-outlet>
