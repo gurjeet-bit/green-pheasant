@@ -8,7 +8,6 @@
 
 # Node
 /node_modules
-/src_old
 /dist
 npm-debug.log
 yarn-error.log
